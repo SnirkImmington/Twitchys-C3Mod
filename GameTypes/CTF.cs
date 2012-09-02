@@ -45,7 +45,7 @@ namespace C3Mod.GameTypes
 
                     if (VotedPlayers == TotalPlayers)
                     {
-                        C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag passed, Teleporting to start positions", Color.DarkCyan);
+                        C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag passed, teleporting you to starting positions", Color.DarkCyan);
                         C3Mod.VoteRunning = false;
                         C3Mod.VoteType = "";
                         CTF.Team2FlagCarrier = null;
@@ -65,7 +65,7 @@ namespace C3Mod.GameTypes
                         if (VoteCount != 1 && VoteCount < (C3Mod.C3Config.VoteTime / C3Mod.C3Config.VoteNotifyInterval))
                         {
                             C3Tools.BroadcastMessageToGametype("ctf", "Vote still in progress, please be patient", Color.Cyan);
-                            C3Tools.BroadcastMessageToGametype("", "Vote to play Capture the Flag in progress, type /join to join the lobby", Color.Cyan);
+                            C3Tools.BroadcastMessageToGametype("", "Vote to play Capture the Flag in progress, type \"/join\" to join the game", Color.Cyan);
                         }
 
                         VoteCount--;
@@ -89,7 +89,7 @@ namespace C3Mod.GameTypes
 
                         if (team1players >= C3Mod.C3Config.VoteMinimumPerTeam && team2players >= C3Mod.C3Config.VoteMinimumPerTeam)
                         {
-                            C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag passed, Teleporting to start positions", Color.DarkCyan);
+                            C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag passed, teleporting you to starting positions", Color.DarkCyan);
                             CTF.Team2FlagCarrier = null;
                             CTF.Team1FlagCarrier = null;
                             CTF.Team2Score = 0;
@@ -100,7 +100,7 @@ namespace C3Mod.GameTypes
                             CTF.CTFGameCountdown = true;
                         }
                         else
-                            C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag failed, Not enough players", Color.DarkCyan);
+                            C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag failed, not enough players", Color.DarkCyan);
                     }
                 }
 
@@ -294,7 +294,7 @@ namespace C3Mod.GameTypes
                     }
                     if (team1players == 0 || team2players == 0)
                     {
-                        C3Tools.BroadcastMessageToGametype("ctf", "Capture the Flag stopped, Not enough players to continue", Color.DarkCyan);
+                        C3Tools.BroadcastMessageToGametype("ctf", "Capture the Flag stopped, not enough players to continue", Color.DarkCyan);
                         CTFGameRunning = false;
                         TpToSpawns(false);
                         C3Tools.ResetGameType("ctf");
@@ -309,7 +309,7 @@ namespace C3Mod.GameTypes
                         //Make them drop the flag
                         if (Team2FlagCarrier.TerrariaDead)
                         {
-                            C3Tools.BroadcastMessageToGametype("ctf", Team2FlagCarrier.PlayerName + ": Dropped the flag!", Color.LightBlue);
+                            C3Tools.BroadcastMessageToGametype("ctf", Team2FlagCarrier.PlayerName + " dropped the flag!", Color.LightBlue);
                             Team2FlagCarrier = null;
                         }
                         //Capture the flag

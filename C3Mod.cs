@@ -243,7 +243,10 @@ namespace C3Mod
             Commands.ChatCommands.Add(new Command("vote", C3Commands.StartVote, "vote"));
             Commands.ChatCommands.Add(new Command("joinvote", C3Commands.JoinVote, "join"));
             Commands.ChatCommands.Add(new Command("managec3settings", C3Commands.Stop, "stop"));
-            Commands.ChatCommands.Add(new Command(C3Commands.Quit, "quit"));
+
+            if (C3Config.AllowQuitingGames)
+                Commands.ChatCommands.Add(new Command(C3Commands.Quit, "quit"));
+
             Commands.ChatCommands.Add(new Command("managec3settings", C3Commands.SetCTFLimit, "setctflimit"));
             Commands.ChatCommands.Add(new Command("managec3settings", C3Commands.SetOneFlagLimit, "setoneflaglimit"));
             Commands.ChatCommands.Add(new Command("managec3settings", C3Commands.SetDuelLimit, "setduellimit"));

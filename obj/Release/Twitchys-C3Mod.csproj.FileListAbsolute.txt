@@ -1,0 +1,13 @@
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\Twitchys-C3Mod.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\Twitchys-C3Mod.pdb
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\Community.CsharpSqlite.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\Community.CsharpSqlite.SQLiteClient.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\Mono.Data.Sqlite.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\MySql.Data.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\MySql.Web.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\Newtonsoft.Json.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\TerrariaServer.exe
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\bin\Release\TShockAPI.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\obj\Release\Twitchys-C3Mod.dll
+C:\Users\Joshua\Documents\GitHub\Twitchys-C3Mod\obj\Release\Twitchys-C3Mod.pdb

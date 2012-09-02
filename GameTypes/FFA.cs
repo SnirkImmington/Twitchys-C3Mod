@@ -36,7 +36,7 @@ namespace C3Mod.GameTypes
 
                     if (VotedPlayers == TotalPlayers)
                     {
-                        C3Tools.BroadcastMessageToGametype("ffa", "Vote to play Free For All passed, Teleporting to start position", Color.DarkCyan);
+                        C3Tools.BroadcastMessageToGametype("ffa", "Vote to play Free For All passed, teleporting you to starting positions", Color.DarkCyan);
                         C3Mod.VoteRunning = false;
                         C3Mod.VoteType = "";
                         bool[] playersDead = new bool[Main.maxNetPlayers];
@@ -52,7 +52,7 @@ namespace C3Mod.GameTypes
                         if (VoteCount != 1 && VoteCount < (C3Mod.C3Config.VoteTime / C3Mod.C3Config.VoteNotifyInterval))
                         {
                             C3Tools.BroadcastMessageToGametype("ffa", "Vote still in progress, please be patient", Color.Cyan);
-                            C3Tools.BroadcastMessageToGametype("", "Vote to play Free For All in progress, type /join to join the lobby", Color.Cyan);
+                            C3Tools.BroadcastMessageToGametype("", "Vote to play Free For All in progress, type \"/join\" to join the game", Color.Cyan);
                         }
 
                         VoteCount--;
@@ -73,7 +73,7 @@ namespace C3Mod.GameTypes
 
                         if (players >= C3Mod.C3Config.VoteMinimumPerTeam)
                         {
-                            C3Tools.BroadcastMessageToGametype("ffa", "Vote to play Free For All passed, Teleporting to start position", Color.DarkCyan);
+                            C3Tools.BroadcastMessageToGametype("ffa", "Vote to play Free For All passed, teleporting to starting positions", Color.DarkCyan);
                             bool[] playersDead = new bool[Main.maxNetPlayers];
                             TpToSpawnPoint();
                             countDownTick = DateTime.UtcNow;
@@ -81,7 +81,7 @@ namespace C3Mod.GameTypes
                         }
                         else
                         {
-                            C3Tools.BroadcastMessageToGametype("ffa", "Vote to play Free For All failed, Not enough players", Color.DarkCyan);
+                            C3Tools.BroadcastMessageToGametype("ffa", "Vote to play Free For All failed, not enough players", Color.DarkCyan);
                             FFASpawn = new Vector2();
                         }
                     }

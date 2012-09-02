@@ -419,7 +419,8 @@ namespace C3Mod
                         {
                             if (CTF.CTFGameRunning || CTF.CTFGameCountdown)
                             {
-                                C3Tools.BroadcastMessageToGametype("ctf", "CTF stopped by admin", Color.LightBlue);
+                                //C3Tools.BroadcastMessageToGametype("ctf", "CTF stopped by admin", Color.LightBlue);
+                                TSPlayer.All.SendMessage("Capture The Flag game is over - stopped by admin!", Color.LightBlue);
                                 args.Player.SendMessage("CTF Game Stopped", Color.DarkCyan);
                                 CTF.TpToSpawns(false);
                                 C3Tools.ResetGameType("ctf");
@@ -456,7 +457,8 @@ namespace C3Mod
                         {
                             if (OneFlagCTF.OneFlagGameCountdown || OneFlagCTF.OneFlagGameRunning)
                             {
-                                C3Tools.BroadcastMessageToGametype("oneflag", "One flag stopped by admin", Color.LightBlue);
+                                //C3Tools.BroadcastMessageToGametype("oneflag", "One flag stopped by admin", Color.LightBlue);
+                                TSPlayer.All.SendMessage("One Flag game is over - stopped by an admin!", Color.LightBlue);
                                 args.Player.SendMessage("One Flag Stopped", Color.DarkCyan);
                                 OneFlagCTF.SendToSpawn(false);
                                 C3Tools.ResetGameType("oneflag");
@@ -475,7 +477,8 @@ namespace C3Mod
                         {
                             if (Apocalypse.Intermission || Apocalypse.Running)
                             {
-                                C3Tools.BroadcastMessageToGametype("apoc", "Apocalypse stopped by admin", Color.LightBlue);
+                                //C3Tools.BroadcastMessageToGametype("apoc", "Apocalypse stopped by admin", Color.LightBlue);
+                                TSPlayer.All.SendMessage("Apolalypse game is over - stopped by an admin!", Color.LightBlue);
                                 args.Player.SendMessage("Apocalypse Stopped", Color.DarkCyan);
                                 Apocalypse.TpToSpawns(false);
                                 C3Tools.ResetGameType("apoc");
@@ -492,7 +495,8 @@ namespace C3Mod
                         {
                             if (TDM.TDMCountdown || TDM.TDMRunning)
                             {
-                                C3Tools.BroadcastMessageToGametype("tdm", "Team Deathmatch stopped by admin", Color.LightBlue);
+                                //C3Tools.BroadcastMessageToGametype("tdm", "Team Deathmatch stopped by admin", Color.LightBlue);
+                                TSPlayer.All.SendMessage("Team Deathmatch game is over - stopped by an admin!", Color.Red);
                                 args.Player.SendMessage("Team Deathmatch Stopped", Color.DarkCyan);
                                 TDM.TpToSpawns(false);
                                 C3Tools.ResetGameType("tdm");
@@ -509,7 +513,8 @@ namespace C3Mod
                         {
                             if (FFA.FFACountdown || FFA.FFARunning)
                             {
-                                C3Tools.BroadcastMessageToGametype("ffa", "Free For All stopped by admin", Color.LightBlue);
+                                //C3Tools.BroadcastMessageToGametype("ffa", "Free For All stopped by admin", Color.LightBlue);
+                                TSPlayer.All.SendMessage("Free for All is over - stopped by an admin!", Color.LightBlue);
                                 args.Player.SendMessage("Free For All Stopped", Color.DarkCyan);
                                 FFA.TpToSpawns(false);
                                 C3Tools.ResetGameType("ffa");
@@ -546,7 +551,9 @@ namespace C3Mod
                     {
                         int arena = 1;
                         if (args.Parameters.Count > 1)
+                        {
                             Int32.TryParse(args.Parameters[1], out arena);
+                        }
 
                         //Gametype Divider
                         ///CTF
@@ -558,10 +565,15 @@ namespace C3Mod
                                 {
                                     if (!CTF.CTFGameRunning && !CTF.CTFGameCountdown)
                                     {
+                                        if (args.Parameters[1] == "#" || args.Parameters[1].ToLower() == "rand" || args.Parameters[1].ToLower() == "random")
+                                        {
+                                            arena = ( new Random() ).Next(1, CTF.Arenas.Count());
+                                        }
+
                                         CTF.flagPoints = CTF.Arenas[arena - 1].Flags;
                                         CTF.spawnPoints = CTF.Arenas[arena - 1].Spawns;
                                         C3Tools.BroadcastMessageToGametype("", "Vote to play Capture the Flag started by: " + args.Player.Name, Color.Cyan);
-                                        C3Tools.BroadcastMessageToGametype("", "Type /join to join the lobby for this game! Arena: " + CTF.Arenas[arena - 1].Name, Color.Cyan);
+                                        C3Tools.BroadcastMessageToGametype("", "Type \"/join\" to join this game! Arena: " + CTF.Arenas[arena - 1].Name, Color.Cyan);
                                         CTF.Team2Score = 0;
                                         CTF.Team1Score = 0;
                                         CTF.Team1FlagCarrier = null;
@@ -589,6 +601,11 @@ namespace C3Mod
                                 {
                                     if (!OneFlagCTF.OneFlagGameRunning && !OneFlagCTF.OneFlagGameCountdown)
                                     {
+                                        if (args.Parameters[1] == "#" || args.Parameters[1].ToLower() == "rand" || args.Parameters[1].ToLower() == "random")
+                                        {
+                                            arena = ( new Random() ).Next(1, OneFlagCTF.Arenas.Count());
+                                        }
+
                                         OneFlagCTF.FlagPoint = OneFlagCTF.Arenas[arena - 1].Flag;
                                         OneFlagCTF.SpawnPoint = OneFlagCTF.Arenas[arena - 1].Spawns;
                                         C3Tools.BroadcastMessageToGametype("", "Vote to play One Flag CTF started by: " + args.Player.Name, Color.Cyan);
@@ -619,6 +636,11 @@ namespace C3Mod
                                 {
                                     if (!TDM.TDMRunning && !TDM.TDMCountdown)
                                     {
+                                        if (args.Parameters[1] == "#" || args.Parameters[1].ToLower() == "rand" || args.Parameters[1].ToLower() == "random")
+                                        {
+                                            arena = ( new Random() ).Next(1, TDM.Arenas.Count());
+                                        }
+
                                         TDM.TDMSpawns = TDM.Arenas[arena - 1].Spawns;
                                         C3Tools.BroadcastMessageToGametype("", "Vote to play Team Deathmatch started by: " + args.Player.Name, Color.Cyan);
                                         C3Tools.BroadcastMessageToGametype("", "Type /join to join the lobby for this game! Arena: " + TDM.Arenas[arena - 1].Name, Color.Cyan);
@@ -674,6 +696,11 @@ namespace C3Mod
                                 {
                                     if (!FFA.FFARunning && !FFA.FFACountdown)
                                     {
+                                        if (args.Parameters[1] == "#" || args.Parameters[1].ToLower() == "rand" || args.Parameters[1].ToLower() == "random")
+                                        {
+                                            arena = ( new Random() ).Next(1, FFA.Arenas.Count());
+                                        }
+
                                         FFA.FFASpawn = FFA.Arenas[arena - 1].Spawn;
                                         C3Tools.BroadcastMessageToGametype("", "Vote to play Free For All started by: " + args.Player.Name, Color.Cyan);
                                         C3Tools.BroadcastMessageToGametype("", "Type /join to join the lobby for this game! Arena: " + FFA.Arenas[arena - 1].Name, Color.Cyan);
@@ -719,7 +746,7 @@ namespace C3Mod
                     {
                         case "ctf":
                             {
-                                args.Player.SendMessage("You have joined the lobby for Capture the Flag", Color.Cyan);
+                                args.Player.SendMessage("You have joined the game Capture the Flag", Color.Cyan);
 
                                 string team = C3Tools.AssignTeam(C3Tools.GetC3PlayerByIndex(args.Player.Index), "ctf");
 
@@ -750,7 +777,7 @@ namespace C3Mod
                             }
                         case "oneflag":
                             {
-                                args.Player.SendMessage("You have joined the lobby for One Flag CTF", Color.Cyan);
+                                args.Player.SendMessage("You have joined the game of One Flag CTF", Color.Cyan);
 
                                 string team = C3Tools.AssignTeam(C3Tools.GetC3PlayerByIndex(args.Player.Index), "oneflag");
 
@@ -781,7 +808,7 @@ namespace C3Mod
                             }
                         case "tdm":
                             {
-                                args.Player.SendMessage("You have joined the lobby for Team Deathmatch", Color.Cyan);
+                                args.Player.SendMessage("You have joined the game of Team Deathmatch", Color.Cyan);
 
                                 string team = C3Tools.AssignTeam(C3Tools.GetC3PlayerByIndex(args.Player.Index), "tdm");
 
@@ -812,7 +839,7 @@ namespace C3Mod
                             }
                         case "ffa":
                             {
-                                args.Player.SendMessage("You have joined the lobby for Free For All", Color.Cyan);
+                                args.Player.SendMessage("You have joined the game of Free For All", Color.Cyan);
 
                                 C3Tools.GetC3PlayerByIndex(args.Player.Index).GameType = "ffa";
                                 C3Tools.GetC3PlayerByIndex(args.Player.Index).Team = 9;
@@ -820,7 +847,7 @@ namespace C3Mod
                             }
                         case "apoc":
                             {
-                                args.Player.SendMessage("You have joined the lobby for Apocalypse...", Color.Cyan);
+                                args.Player.SendMessage("You have joined the Apocalypse...", Color.Cyan);
                                 C3Tools.GetC3PlayerByIndex(args.Player.Index).GameType = "apoc";
                                 break;
                             }

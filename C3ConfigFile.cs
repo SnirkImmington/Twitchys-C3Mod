@@ -7,6 +7,7 @@ namespace C3Mod
     public class C3ConfigFile
     {
         public bool TPLockEnabled = true;
+        public bool AllowQuitingGames = true;
 
         public int VoteTime = 30;
         public int VoteMinimumPerTeam = 1;
