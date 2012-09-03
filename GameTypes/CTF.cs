@@ -45,6 +45,7 @@ namespace C3Mod.GameTypes
 
                     if (VotedPlayers == TotalPlayers)
                     {
+                        C3Tools.BroadcastMessageToGametype("", "The vote to play Capture the Flag has ended!", Color.DarkCyan);
                         C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag passed, teleporting you to starting positions", Color.DarkCyan);
                         C3Mod.VoteRunning = false;
                         C3Mod.VoteType = "";
@@ -89,6 +90,7 @@ namespace C3Mod.GameTypes
 
                         if (team1players >= C3Mod.C3Config.VoteMinimumPerTeam && team2players >= C3Mod.C3Config.VoteMinimumPerTeam)
                         {
+                            C3Tools.BroadcastMessageToGametype("", "The vote to play Capture the Flag has ended!", Color.DarkCyan);
                             C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag passed, teleporting you to starting positions", Color.DarkCyan);
                             CTF.Team2FlagCarrier = null;
                             CTF.Team1FlagCarrier = null;
@@ -100,7 +102,7 @@ namespace C3Mod.GameTypes
                             CTF.CTFGameCountdown = true;
                         }
                         else
-                            C3Tools.BroadcastMessageToGametype("ctf", "Vote to play Capture the Flag failed, not enough players", Color.DarkCyan);
+                            TSPlayer.All.SendMessage("Vote to play Capture the Flag failed, not enough players", Color.DarkCyan);
                     }
                 }
 
@@ -294,7 +296,7 @@ namespace C3Mod.GameTypes
                     }
                     if (team1players == 0 || team2players == 0)
                     {
-                        C3Tools.BroadcastMessageToGametype("ctf", "Capture the Flag stopped, not enough players to continue", Color.DarkCyan);
+                        TSPlayer.All.SendMessage("Capture the Flag stopped, not enough players to continue", Color.DarkCyan);
                         CTFGameRunning = false;
                         TpToSpawns(false);
                         C3Tools.ResetGameType("ctf");
@@ -488,13 +490,13 @@ namespace C3Mod.GameTypes
                 {
                     CTFGameRunning = false;
                     if (C3Mod.C3Config.TeamColor2 == 1)
-                        C3Tools.BroadcastMessageToGametype("ctf", "RED TEAM WINS!", Color.OrangeRed);
+                        TSPlayer.All.SendMessage("RED TEAM WINS CAPTURE THE FLAG!", Color.OrangeRed);
                     else if (C3Mod.C3Config.TeamColor2 == 2)
-                        C3Tools.BroadcastMessageToGametype("ctf", "GREEN TEAM WINS!", Color.LightGreen);
+                        TSPlayer.All.SendMessage("GREEN TEAM WINS CAPTURE THE FLAG!", Color.LightGreen);
                     else if (C3Mod.C3Config.TeamColor2 == 3)
-                        C3Tools.BroadcastMessageToGametype("ctf", "BLUE TEAM WINS!", Color.LightBlue);
+                        TSPlayer.All.SendMessage("BLUE TEAM WINS CAPTURE THE FLAG!", Color.LightBlue);
                     else if (C3Mod.C3Config.TeamColor2 == 4)
-                        C3Tools.BroadcastMessageToGametype("ctf", "YELLOW TEAM WINS!", Color.LightYellow);
+                        TSPlayer.All.SendMessage("YELLOW TEAM WINS CAPTURE THE FLAG!", Color.LightYellow);
                     List<C3Player> LostPlayers = new List<C3Player>();
                     List<C3Player> WonPlayers = new List<C3Player>();
 
@@ -521,13 +523,13 @@ namespace C3Mod.GameTypes
                 {
                     CTFGameRunning = false;
                     if (C3Mod.C3Config.TeamColor1 == 1)
-                        C3Tools.BroadcastMessageToGametype("ctf", "RED TEAM WINS!", Color.OrangeRed);
+                        TSPlayer.All.SendMessage("RED TEAM WINS CAPTURE THE FLAG!", Color.OrangeRed);
                     else if (C3Mod.C3Config.TeamColor1 == 2)
-                        C3Tools.BroadcastMessageToGametype("ctf", "GREEN TEAM WINS!", Color.LightGreen);
+                        TSPlayer.All.SendMessage("GREEN TEAM WINS CAPTURE THE FLAG!", Color.LightGreen);
                     else if (C3Mod.C3Config.TeamColor1 == 3)
-                        C3Tools.BroadcastMessageToGametype("ctf", "BLUE TEAM WINS!", Color.LightBlue);
+                        TSPlayer.All.SendMessage("BLUE TEAM WINS CAPTURE THE FLAG!", Color.LightBlue);
                     else if (C3Mod.C3Config.TeamColor1 == 4)
-                        C3Tools.BroadcastMessageToGametype("ctf", "YELLOW TEAM WINS!", Color.LightYellow);
+                        TSPlayer.All.SendMessage("YELLOW TEAM WINS CAPTURE THE FLAG!", Color.LightYellow);
                     List<C3Player> LostPlayers = new List<C3Player>();
                     List<C3Player> WonPlayers = new List<C3Player>();
 
@@ -604,7 +606,7 @@ namespace C3Mod.GameTypes
 
                 if (playersred == 0 || playersblue == 0)
                 {
-                    C3Tools.BroadcastMessageToGametype("ctf", "Not enough players to start CTF", Color.DarkCyan);
+                    TSPlayer.All.SendMessage("Not enough players to start CTF", Color.DarkCyan);
                     CTFGameRunning = false;
                     CTFGameCountdown = false;
                     TpToSpawns(false);

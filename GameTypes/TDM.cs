@@ -261,13 +261,13 @@ namespace C3Mod.GameTypes
                     {
                         TDMRunning = false;
                         if (C3Mod.C3Config.TeamColor2 == 1)
-                            C3Tools.BroadcastMessageToGametype("tdm", "RED TEAM WINS!", Color.OrangeRed);
+                            TSPlayer.All.SendMessage("RED TEAM WINS TEAM DEATHMATCH!", Color.OrangeRed);
                         else if (C3Mod.C3Config.TeamColor2 == 2)
-                            C3Tools.BroadcastMessageToGametype("tdm", "GREEN TEAM WINS!", Color.LightGreen);
+                            TSPlayer.All.SendMessage("GREEN TEAM WINS TEAM DEATHMATCH!", Color.LightGreen);
                         else if (C3Mod.C3Config.TeamColor2 == 3)
-                            C3Tools.BroadcastMessageToGametype("tdm", "BLUE TEAM WINS!", Color.LightBlue);
+                            TSPlayer.All.SendMessage("BLUE TEAM WINS TEAM DEATHMATCH!", Color.LightBlue);
                         else if (C3Mod.C3Config.TeamColor2 == 4)
-                            C3Tools.BroadcastMessageToGametype("tdm", "YELLOW TEAM WINS!", Color.LightYellow);
+                            TSPlayer.All.SendMessage("YELLOW TEAM WINS TEAM DEATHMATCH!", Color.LightYellow);
 
                         List<C3Player> LostPlayers = new List<C3Player>();
                         List<C3Player> WonPlayers = new List<C3Player>();
@@ -295,13 +295,13 @@ namespace C3Mod.GameTypes
                     {
                         TDMRunning = false;
                         if (C3Mod.C3Config.TeamColor1 == 1)
-                            C3Tools.BroadcastMessageToGametype("tdm", "RED TEAM WINS!", Color.OrangeRed);
+                            TSPlayer.All.SendMessage("RED TEAM WINS TEAM DEATHMATCH!", Color.OrangeRed);
                         else if (C3Mod.C3Config.TeamColor1 == 2)
-                            C3Tools.BroadcastMessageToGametype("tdm", "GREEN TEAM WINS!", Color.LightGreen);
+                            TSPlayer.All.SendMessage("GREEN TEAM WINS TEAM DEATHMATCH!", Color.LightGreen);
                         else if (C3Mod.C3Config.TeamColor1 == 3)
-                            C3Tools.BroadcastMessageToGametype("tdm", "BLUE TEAM WINS!", Color.LightBlue);
+                            TSPlayer.All.SendMessage("BLUE TEAM WINS TEAM DEATHMATCH!", Color.LightBlue);
                         else if (C3Mod.C3Config.TeamColor1 == 4)
-                            C3Tools.BroadcastMessageToGametype("tdm", "YELLOW TEAM WINS!", Color.LightYellow);
+                            TSPlayer.All.SendMessage("YELLOW TEAM WINS TEAM DEATHMATCH!", Color.LightYellow);
 
                         List<C3Player> LostPlayers = new List<C3Player>();
                         List<C3Player> WonPlayers = new List<C3Player>();
